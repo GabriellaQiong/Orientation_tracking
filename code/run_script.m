@@ -8,6 +8,7 @@ clc;
 
 %% Initialize
 verbose = true;                  % Whether to show the details
+bias    = [];
 
 %% Path
 scriptDir = fileparts(mfilename('fullpath'));
@@ -19,7 +20,7 @@ outputDir = fullfile(scriptDir, '../results');
 if ~exist(outputDir, 'dir')
     mkdir(outputDir); 
 end
-addpath(genpath('code'));
+addpath(genpath('../code'));
 
 %% Load data
 dataIdx = input('Please choose one dataset (1 ~ 9): ');
@@ -31,7 +32,10 @@ load(fullfile(camDir, ['cam', num2str(dataIdx)]));
 tsCam   = ts;
 
 %% Parse data
+acc  = parse_acc(vals, bias);
+gyro = parse_gyro(vals, bias);
 
+% Convert to quaternion 
 
 %% Orientation Tracking
 
