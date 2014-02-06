@@ -8,7 +8,6 @@ clc;
 
 %% Initialize
 verbose = true;                  % Whether to show the details
-bias    = [];
 
 %% Path
 scriptDir = fileparts(mfilename('fullpath'));
@@ -34,6 +33,7 @@ tsCam   = ts;
 %% Parse data
 acc  = parse_acc(vals, bias);
 gyro = parse_gyro(vals, bias);
+
 
 % Convert to quaternion 
 
