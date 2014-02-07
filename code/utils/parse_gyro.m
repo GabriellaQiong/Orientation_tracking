@@ -14,7 +14,7 @@ end
 
 % Parameters
 Vref        = 3300;
-sensitivity = 500;
+sensitivity = 0.001;
 scale       = Vref / 1023 / sensitivity * pi / 180;
 
 % Compute acceleration
@@ -22,7 +22,13 @@ gyroNew   = scale .* bsxfun(@minus, gyroRaw, bias);
 factorMat = [0 1 0; 0 0 1; 1 0 0];
 gyroNew   = factorMat * gyroNew;
 
-% Compute the rotation matrix
-R         = [];
-velNorm   = sqrt(sum(gyroNew .* gyroNew, 1);
+% Compute the rotation matrix using quaternion
+velNorm = sqrt(sum(gyroNew .* gyroNew, 1));
+deltaT  = ts - [ts(1), ts(1 : end - 1)];
+angle   = velNorm .* deltaT;
+axis    = bsxfun(@rdivide, gyroNew, velNorm); 
+qDelta  = [cos(angle / 2)' transpose(bsxfun(@times, axis, sin(angle / 2)))];
+q0      = [1 0 0 0];
+q       = quatnormalize(quatmultiply(q0, qDelta));
+R       = quat2dcm(q);
 end
