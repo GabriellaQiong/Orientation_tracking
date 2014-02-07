@@ -8,7 +8,7 @@ clc;
 
 %% Initialize
 check   = true;                  % Whether to do sanity check
-verbose = true;                  % Whether to show the details
+verbose = false;                  % Whether to show the details
 
 %% Path
 scriptDir = fileparts(mfilename('fullpath'));
@@ -41,5 +41,4 @@ if check
 end
 
 %% Orientation Tracking
-
 % UKF filter

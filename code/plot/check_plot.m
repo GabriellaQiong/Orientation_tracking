@@ -25,6 +25,8 @@ if verbose
     h1 = figure(1);
     set(gcf,'units','normalized','position',[0 .4 .6 .6]);
     ht = suptitle({'Sanity Check for Data Conversion'; sprintf('Time = %05f s',t(1))});
+else
+    ht = [];
 end
 rpyVicon = zeros(datNum, 3);
 rpyAcc   = zeros(datNum, 3);
@@ -42,6 +44,7 @@ for i = 1 : datNum
     rpyVel(i, :)   = rot2rpy(RvelNew(:, :, i));
     set(ht, 'String', {'Sanity Check for Data Conversion'; sprintf('Time = %05f s',t(i))});
 end
+close(gcf);
 
 %% Plot roll pitch yaw angles
 h2 = figure(2);
