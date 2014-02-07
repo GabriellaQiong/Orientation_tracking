@@ -6,7 +6,7 @@ function [startIdx] = sync_time(ts1, ts2)
 % OUTPUT
 % startIdx -- start index of time according to second sensor, if positive
 %             time starts from ts1(startIdx), if negative time starts from
-%             ts2(startIdx)
+%             ts2(-startIdx)
 
 % Compute the differences
 diff1 = abs(ts1 - ts2(1));

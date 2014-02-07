@@ -14,7 +14,7 @@ end
 
 % Parameters
 Vref        = 3300;
-sensitivity = 500;                         % Higher --> more accurate
+sensitivity = 300;                         % Higher --> more accurate
 scale       = Vref / 1023 / sensitivity;   % Wrong in reference datasheet
 datNum      = size(accRaw, 2);
 

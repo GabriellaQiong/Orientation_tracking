@@ -7,6 +7,7 @@ clear all;
 clc;
 
 %% Initialize
+check   = true;                  % Whether to do sanity check
 verbose = true;                  % Whether to show the details
 
 %% Path
@@ -30,12 +31,14 @@ tsVicon = ts;
 load(fullfile(camDir, ['cam', num2str(dataIdx)]));
 tsCam   = ts;
 
-%% Parse data
+%% Parse data and sanity check
 bias          = compute_bias(vals);
 [acc, Racc]   = parse_acc(vals, bias);
 [vel, Rvel]   = parse_gyro(vals, bias, tsImu);
 
-% Convert to quaternion 
+if check
+    check_plot;
+end
 
 %% Orientation Tracking
 

@@ -1,4 +1,4 @@
-function [roll, pitch, yaw] = rot2rpy(R)
+function [rpy] = rot2rpy(R)
 % ROT2RPY() converts rotation matrix to raw pitch yaw angles
 %
 % Written by Qiong Wang at University of Pennsylvania
@@ -15,3 +15,4 @@ function [roll, pitch, yaw] = rot2rpy(R)
 roll  = asin(R(2,3));
 yaw   = atan2(-R(2,1)/cos(roll),R(2,2)/cos(roll));
 pitch = atan2(-R(1,3)/cos(roll),R(3,3)/cos(roll));
+rpy   = [roll, pitch, yaw];

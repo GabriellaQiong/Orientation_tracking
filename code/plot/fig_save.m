@@ -15,7 +15,6 @@ figWidth  = figPos(3);
 figHeight = figPos(4);
 set(h, 'PaperPosition', [0 0 figWidth figHeight]);
 set(h, 'PaperSize',     [figWidth figHeight]);
-set(gca, 'Position', [0 0 1 1], 'Visible', 'Off');
 
 % Save as pdf
 print(h, ['-d', str], filename);

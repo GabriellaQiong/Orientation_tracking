@@ -1,7 +1,15 @@
-function h = rotplot(R)
+function h = rotplot(R, str, verbose)
 % This is a simple function to plot the orientation
 % of a 3x3 rotation matrix R in 3-D
 % You should modify it as you wish for the project.
+
+if nargin < 3
+    verbose = true;
+end
+
+if ~verbose
+    return
+end
 
 lx = 3.0;
 ly = 1.5;
@@ -20,9 +28,13 @@ ibottom = [5 6 8 7 5];
 plot3(xp(1,itop), xp(2,itop), xp(3,itop), 'k-', ...
       xp(1,ibottom), xp(2,ibottom), xp(3,ibottom), 'k-');
 hold on;
+grid on;
 patch(xp(1,ifront), xp(2,ifront), xp(3,ifront), 'b');
 patch(xp(1,iback), xp(2,iback), xp(3,iback), 'r');
 hold off;
 
+axis equal;
 axis([-2 2 -2 2 -2 2]);
+title(str);
 drawnow
+end
