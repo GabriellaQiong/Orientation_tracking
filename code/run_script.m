@@ -31,9 +31,9 @@ load(fullfile(camDir, ['cam', num2str(dataIdx)]));
 tsCam   = ts;
 
 %% Parse data
-acc  = parse_acc(vals, bias);
-gyro = parse_gyro(vals, bias);
-
+bias          = compute_bias(vals);
+[acc, Racc]   = parse_acc(vals, bias);
+[vel, Rvel]   = parse_gyro(vals, bias, tsImu);
 
 % Convert to quaternion 
 
