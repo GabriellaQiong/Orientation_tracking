@@ -8,7 +8,10 @@ clc;
 
 %% Initialize
 check   = true;                  % Whether to do sanity check
-verbose = false;                  % Whether to show the details
+verbose = false;                 % Whether to show the details
+P       = eye(3);                % State covariance matrix
+Q       = eye(3);                % Process noise covariance matrix
+R       = eye(3);                % Measurement noise covariance matrix
 
 %% Path
 scriptDir = fileparts(mfilename('fullpath'));
@@ -32,9 +35,9 @@ load(fullfile(camDir, ['cam', num2str(dataIdx)]));
 tsCam   = ts;
 
 %% Parse data and sanity check
-bias          = compute_bias(vals);
-[acc, Racc]   = parse_acc(vals, bias);
-[vel, Rvel]   = parse_gyro(vals, bias, tsImu);
+bias        = compute_bias(vals);
+[acc, Racc] = parse_acc(vals, bias);
+[vel, Rvel] = parse_gyro(vals, bias, tsImu);
 
 if check
     check_plot;

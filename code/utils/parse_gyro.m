@@ -24,7 +24,7 @@ factorMat = [0 1 0; 0 0 1; 1 0 0];
 gyroNew   = factorMat * gyroNew;
 
 % Compute the rotation matrix using quaternion
-velNorm = sqrt(sum(gyroNew .* gyroNew, 1));
+velNorm = sqrt(sum(gyroNew.^2, 1));
 deltaT  = ts - [ts(1), ts(1 : end - 1)];
 angle   = velNorm .* deltaT;
 axis    = bsxfun(@rdivide, gyroNew, velNorm); 
