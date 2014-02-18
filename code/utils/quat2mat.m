@@ -7,5 +7,6 @@ function W = quat2mat(q)
 % INPUT
 % q -- N x 4
 
-W = transpose(bsxfun(@rdivide, q(:, 2 : 4), sqrt(1 - q(:, 1).^2)));
+W           = transpose(bsxfun(@rdivide, q(:, 2 : 4), sqrt(1 - q(:, 1).^2)));
+W(isnan(W)) = 0;
 end

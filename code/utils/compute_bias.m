@@ -6,6 +6,6 @@ function bias = compute_bias(imuVals)
 
 bias        = mean(imuVals(:, 1 : 150), 2);
 Vref        = 3300;
-sensitivity = 3.3;
-bias(3)     = 1/ (Vref / 1023 / sensitivity) + bias(3);
+sensitivity = 300;
+bias(3)     = - 1/ (Vref / 1023 / sensitivity) + bias(3);
 end

@@ -20,7 +20,7 @@ datNum      = size(gyroRaw, 2);
 
 % Compute acceleration
 gyroNew   = scale .* bsxfun(@minus, gyroRaw, bias);
-factorMat = [0 1 0; 0 0 1; 1 0 0];
+factorMat = [0 1 0; 0 0 1; - 1 0 0];
 gyroNew   = factorMat * gyroNew;
 
 % Compute the rotation matrix using quaternion
